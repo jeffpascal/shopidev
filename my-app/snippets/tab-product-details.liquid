@@ -1,0 +1,35 @@
+<div class=" tab-pd-details">
+    <ul class="nav nav-tabs tab_prod">
+      {% if section.settings.enable_description_tab %}
+      <li>
+        <a  data-toggle="tab" href="#des" class="active" >{{section.settings.destab_title}}</a>
+      </li>
+      {% endif %}
+      {% if section.settings.enable_addition_tab %}
+      <li >
+        <a   data-toggle="tab" href="#add"  >{{section.settings.addtab_title}}</a>
+      </li>
+      {% endif %}
+      
+      
+      {% if section.settings.enable_review_tab %}
+      <li>
+        <a data-toggle="tab" href="#review" >{{section.settings.reviewtab_title}}</a>
+      </li>
+      {% endif %}
+    </ul>
+    <div class="tab-content" >
+      {% if section.settings.enable_description_tab %}
+      <div class="tab-pane fade show active" id="des">
+        <div class="desc product-desc">{{ product.description}}
+        </div>      
+      </div>
+      {% endif %}
+      {% if section.settings.enable_addition_tab %}
+      <div class="tab-pane fade" id="add">{{section.settings.addtab_content}}</div>
+      {% endif %}
+      {% if section.settings.enable_review_tab %}
+      <div class="tab-pane fade container" id="review"><div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div></div>
+      {% endif %}
+    </div>
+  </div>

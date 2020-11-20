@@ -1,0 +1,12 @@
+<div class="widget widget-category filter-category">
+  <h2 class="widget-title ">{{section.settings.widget_cate_title}}</h2>
+  <div class="widget-content">
+    <ul class="list-category-toggle toggle-tab list-none">
+      {% for link in linklists[section.settings.widget_cate_menu].links %}
+
+      	<li class="item-toggle-tab"><a  href="{{ link.url }}"><i class="fa fa-angle-right" aria-hidden="true"></i>{{link.title | split: '[' | first }}</a></li>
+
+      {% endfor %}
+    </ul>
+  </div>
+</div>

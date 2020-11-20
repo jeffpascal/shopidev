@@ -1,0 +1,65 @@
+<div class="js-minicart minicart" >
+  <div class="relative" style="height: 100%;">
+  	<div class="mini-content ">    
+    <div class="mini-cart-head">
+      <a href="javascript:void(0)" class="mini-cart-undo close-mini-cart">
+        <i class= "ti-close"></i>
+      </a>        
+      <h3 class="title">{{ 'minicart.general.title' | t }}</h3>
+      <div class="mini-cart-counter"><span class="cart-counter enj-cartcount">{{cart.item_count }}</span></div>
+    </div>       
+    
+    <div class="mini-cart-bottom enj-minicart-ajax">
+      {% if cart.item_count > 0 %}
+      <div class="prod">
+        <div class="product-cart ">
+          {% for item in cart.items %}
+          <ol class="minicart_item list-unstyled mb-0">
+            <li class="d-flex">
+              <div class="thumb_img_cartmini">
+                <a href="{{item.url}}" title="" class=""><img alt="{{item.title}}" src="{{ item.image | product_img_url: 'small' }}"></a>
+              </div>
+              <div class="product-detail">
+                <h3 class="product_name_mini">
+                  <a href="{{item.url}}">{{item.title}}</a>
+                </h3>
+                <div class="product_info">
+                  <div class="product_quanity">QTY : {{ item.quantity }} </div>
+                  <div class="product_price">
+                    <span class="price_sale">{{ item.price | money }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="produc_remove">
+                <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="remove-product"><i class="ti-close"></i></a>
+              </div>
+            </li>
+          </ol>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="sub-total">
+        <span class="total-title float-left">{{ 'minicart.general.total_price' | t }}</span>
+        <span class="total-price float-right">{{cart.total_price | money}}</span>
+      </div>
+      <div class="action-checkout">
+        <a href="/cart" class="button-viewcart">
+          <span>{{ 'minicart.general.view_cart' | t }}</span>
+        </a>
+        <a href="/checkout" class="button-checkout">
+          <span>{{ 'minicart.general.checkout' | t }}</span>
+        </a>
+      </div>      
+      {% else %}
+      <div class="list_product_minicart empty">
+        <div class="empty-product_minicart">
+          <p class="mb-0">{{ 'minicart.general.empty' | t }}</p>
+          <a href="/collections/all" class="to-cart">{{ 'minicart.general.shop_now' | t }}</a>
+        </div>
+      </div>      
+      {% endif %}      
+    </div>    
+  </div>
+  </div>
+</div>
+<div class="js-bg bg-minicart"></div>

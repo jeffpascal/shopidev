@@ -1,0 +1,820 @@
+<!-- collection-template.liquid -->
+{% comment %}
+For more information on collection tags:
+- http://docs.shopify.com/themes/liquid-variables/collection
+{% endcomment %}
+{% if template contains 'collection.list' %}
+	{%- assign per_page = settings.nb_per_page -%}
+{% elsif template contains 'collection.24' %}
+	{%- assign per_page = 24 -%}
+{% elsif template contains 'collection.48' %}
+	{%- assign per_page = 48 -%}
+{% else %}
+	{%- assign per_page = settings.nb_per_page -%}
+{% endif %}
+
+{% paginate collection.products by {{section.settings.prod_per_page}} %}
+
+{% comment %}
+Use .grid--rev so that the collection tags appear below the products on mobile
+{% endcomment %}
+<div class="wrap-bread-crumb breadcrumb_collection">
+  <div class="text-center bg-breadcrumb" style="background-image : url({% if section.settings.bg_breadcrumb != blank  %}{{section.settings.bg_breadcrumb | img_url : 'master'}} {% else %}//placehold.it/1920x510 {% endif %})">
+    <div class="title-page">
+
+      <h2 class="" style="color: {{section.settings.title_color}}">{{collection.title}}</h2>
+
+    </div>
+    {% include 'breadcrumb' %}
+  </div>
+</div>
+
+
+{% if section.settings.collection_layout == "full_width" %}
+{% include 'collection-fullwidth' %}
+
+{% elsif section.settings.collection_layout == "sidebar" %}
+{% include 'collection-layout-sidebar' %}
+
+{% elsif section.settings.collection_layout == "infinity_scroll" %}
+{% include 'collection-infinity-scroll' %}
+
+{% endif %}
+
+
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Collection Page",
+  "settings": [
+	
+	{
+		"type" : "image_picker",
+		"id": "bg_breadcrumb",
+		"label" : "Background Image BreadCrumb",
+		"info" : "1920x510px recommended"
+	},
+		{
+           "type": "color",
+           "id": "title_color",
+           "label": "Title Color",
+           "default": "#fff"
+        },
+	{
+      "type": "header",
+      "content": "Product Per Page"
+    },
+	{
+      "type": "range",
+      "id": "prod_per_page",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "label": "Products Per Page",
+      "default": 8
+    },
+	{
+      "type": "select",
+      "id": "collection_layout",
+      "label": "Collection Layout",
+      "options": [
+        {
+          "value": "full_width",
+          "label": "Collection Layout Full Width"
+        },
+		{
+          "value": "sidebar",
+          "label": "Collection Sidebar"
+        },
+		{
+          "value": "infinity_scroll",
+          "label": "Collection Infinity Scroll"
+        }
+        
+      ]
+    },
+	{
+      "type": "select",
+      "id": "prod_layout",
+      "label": "Product Layout",
+      "options": [
+        {
+          "value": "prod_grid",
+          "label": "Product Grid View"
+        },
+		{
+          "value": "prod_list",
+          "label": "Product List View"
+        }
+        
+      ]
+    },
+	
+	{
+      "type": "header",
+      "content": "Collection Sidebar"
+    },
+    {
+      "type": "select",
+      "id": "sidebar_layout",
+      "label": "Sidebar Layout",
+      "options": [
+        {
+          "value": "sidebar_left",
+          "label": "Sidebar Left"
+        },
+        {
+          "value": "sidebar_right",
+          "label": "Sidebar Right"
+        }
+      ],
+      "default": "sidebar_left"
+    },
+
+	{
+		"type" : "url",
+		"id" : "banner_url",
+		"label": "banner sidebar url"
+	},
+	{
+		"type" : "image_picker",
+		"id": "banner_sidebar",
+		"label" : "Background Image BreadCrumb",
+		"info" : "320x480px recommended"
+	},
+	
+	{
+      "type": "header",
+      "content": "Collection Full Width"
+    },
+    {
+      "type": "image_picker",
+      "id": "bannerfull_img",
+      "info": "1400 x 340px recommended",
+      "label": "Image Banner"
+    },
+    {
+      "type": "text",
+      "id": "big_title",
+      "label": "Big Title",
+      "default" : "A WATCH COLLECTION"
+    },
+	{
+      "type": "text",
+      "id": "mini_title",
+      "label": "Mini Title",
+      "default" : "SALE UP TO 30%"
+    },
+	{
+      "type": "text",
+      "id": "btn_title",
+      "label": "Title Button",
+      "default" : "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "bannerfull_url",
+      "label": "Url collection"
+    },
+    {
+      "type": "collection",
+      "id": "col_bestseller",
+      "label": "Choose Collection"
+    },
+	{
+		"type" : "text",
+		"id" : "text_bestseller",
+		"label" : "Title",
+		"default" : "Best Sellers"
+	},
+	{
+		"type" : "text",
+		"id" : "btn_text_show",
+		"label" : "Title",
+		"default" : "Show all"
+	},
+	{
+		"type" : "url",
+		"id" : "btn_show_url",
+		"label" : "URL"
+	},
+    {
+      "type": "range",
+      "id": "prod_limit",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "label": "Limit Products",
+      "default": 8
+    },
+	{
+      "type": "header",
+      "content": "Config"
+    },
+	{
+		"type" : "checkbox",
+		"id" :	"ena_banner",
+		"label" : "Enable Banner Collection",
+		"default" : true
+	},
+	{
+		"type" : "checkbox",
+		"id" :	"ena_cate",
+		"label" : "Enable Category Collection",
+		"default":  true
+	},
+	{
+		"type" : "checkbox",
+		"id" :	"ena_bestseller",
+		"label" : "Enable Best Seller Collection",
+		"default":  true
+	},
+	{
+		"type" : "checkbox",
+		"id" :	"ena_title_cate",
+		"label" : "Enable Title Collection",
+		"default" : true
+	},
+	{
+		"type" : "checkbox",
+		"id" :	"ena_filter",
+		"label" : "Enable Filter Collection",
+		"default" : true
+	},
+	{
+		"type" : "checkbox",
+		"id" :	"ena_filter2",
+		"label" : "Enable Filter Selectbox Collection",
+		"default" : true
+	},
+	{
+		"type" : "checkbox",
+		"id" :	"ena_list_col",
+		"label" : "Enable List Collection",
+		"default":  true
+	},
+	{
+		"type" : "checkbox",
+		"id" :	"ena_prod_change_style",
+		"label" : "Enable Button Change Product Style",
+		"default" : true
+	},
+	{
+		"type" : "checkbox",
+		"id" :	"ena_prod_per",
+		"label" : "Enable Product Per Row Collection",
+		"default" : true
+	},
+	{
+      "type": "header",
+      "content": "Filter Layout",
+	  "info" : "*Only select when Collection Layout 'Full Width' or 'Infinity Scroll'"
+    },
+	{
+      "type": "select",
+      "id": "filter_layout",
+      "label": "Filter Layout",
+      "options": [
+        {
+          "value": "filter_push_left",
+          "label": "Filter push left"
+        },
+		{
+          "value": "filter_collapse",
+          "label": "Filter Collapse"
+        }
+        
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "Widget Sidebar"
+    },
+    {
+      "type": "paragraph",
+      "content": "Choose your widget and their order."
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_1",
+      "label": "Widget 1",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_2",
+      "label": "Widget 2",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_3",
+      "label": "Widget 3",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_4",
+      "label": "Widget 4",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_5",
+      "label": "Widget 5",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_6",
+      "label": "Widget 6",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+
+
+	{
+      "type": "header",
+      "content": "Widget DropdownList"
+    },
+    {
+      "type": "paragraph",
+      "content": "Choose your widget and their order."
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_drop_1",
+      "label": "Widget 1",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_drop_2",
+      "label": "Widget 2",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_drop_3",
+      "label": "Widget 3",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_drop_4",
+      "label": "Widget 4",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_widget_drop_5",
+      "label": "Widget 5",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "collection-widget-categories",
+          "label": "Widget Categories"
+        },
+        {
+          "value": "collection.shopby-color",
+          "label": "Widget Color Filter"
+        },
+        {
+          "value": "collection.shopby-size",
+          "label": "Widget Size Filter"
+        },
+        {
+          "value": "collection.shopby-price",
+          "label": "Widget Price Filter"
+        },
+        {
+          "value": "collection.shopby-brand",
+          "label": "Widget Brand Filter"
+        },
+        {
+          "value": "collection-widget-tags",
+          "label": "Widget Tags"
+        }
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "Widget config"
+    },
+    {
+      "type": "header",
+      "content": "Widget Categories"
+    },
+    {
+      "type": "text",
+      "id": "widget_cate_title",
+      "label": "Title Widget",
+      "default": "Categories"
+    },
+    {
+      "type": "link_list",
+      "id": "widget_cate_menu",
+      "label": "Menu for Categories"
+    },
+    {
+      "type": "header",
+      "content": "Widget Filter by Color"
+    },
+    {
+      "type": "text",
+      "id": "shop_by_color_title",
+      "label": "Title Widget",
+      "default": "Color Option"
+    },
+    {
+      "type": "textarea",
+      "id": "shop_by_color_list_tags",
+      "info": "Shop by Color list tags is tags in product",
+      "label": "Shop by Color list tags"
+    },
+    {
+      "type": "header",
+      "content": "Widget Filter by Price"
+    },
+    {
+      "type": "text",
+      "id": "shop_by_price_title",
+      "label": "Title Widget",
+      "default": "Price Filter"
+    },
+    {
+      "type": "textarea",
+      "id": "shop_by_price_list_tags",
+      "info": "Shop by Price list tags is tags in product",
+      "label": "Shop by Price list tags"
+    },
+    {
+      "type": "header",
+      "content": "Widget Filter by Size"
+    },
+    {
+      "type": "text",
+      "id": "shop_by_size_title",
+      "label": "Title Widget",
+      "default": "Size Option"
+    },
+    {
+      "type": "textarea",
+      "id": "shop_by_size_list_tags",
+      "info": "Shop by Size list tags is tags in product",
+      "label": "Shop by Size list tags"
+    },
+    {
+      "type": "header",
+      "info": "Brand is vendor in product",
+      "content": "Widget Filter by Brand"
+    },
+    {
+      "type": "text",
+      "id": "shop_by_brand_title",
+      "label": "Widget Title",
+      "default": "Brand"
+    },
+    {
+      "type": "header",
+      "content": "Tag"
+    },
+    {
+      "type": "text",
+      "id": "shop_by_tag_title",
+      "label": "Widget Title",
+      "default": "Tags"
+    }
+  ],
+ "blocks": [
+    {
+      "type": "banner_collection",
+      "name": "Banner Collection",
+      "settings": [
+   
+          {
+            "type": "image_picker",
+            "id": "img_banner",
+            "info": "320 x 320px recommended",
+            "label": "Image Banner"
+          },
+          {
+            "type": "text",
+            "id": "banner_title",
+            "label": "Title Banner",
+			"default" : "New In"
+          },
+          {
+          "type": "url",
+          "id": "url_collection",
+          "label": "Url collection"
+          }
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Page",
+	  "blocks": [
+       
+        ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,296 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-collection-v2" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-collection-v2">
+    <div class="container container-v2">
+      <div class="row">
+        <div class="col-lg-6 col-12 col-md-6">
+          <div class="box-info left">
+            <div class="box-img">
+              {% if section.settings.img_banner1 != blank %}
+              <a  href="{{section.settings.url_banner1}}"><img src="{{section.settings.img_banner1 | img_url:'master'}}" class="img-fluid"></a>
+              {% else %}
+              <a  href="{{section.settings.url_banner1}}"><img src="//placehold.it/589x657" class="img-fluid" alt=""></a>
+              {% endif %}
+            </div>
+            <div class="content-banner">
+              {% if section.settings.title_1 != blank %}
+              <h3 class="title mb-0">
+                <a class="link_hover" href="{{section.settings.url_banner1}}">{{section.settings.title_1}}</a>
+              </h3>
+              {% if section.settings.button_1 != blank %}
+              <a href="{{section.settings.url_button1}}" class="button-shop">{{section.settings.button_1}}</a>
+              {% endif %}              
+            </div>
+            {% endif %}
+            {% if section.settings.sub_title1 != blank %}
+            <span class="label_text"><span class="text">{{section.settings.sub_title1}}</span></span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-6 col-12 col-md-6">
+          <div class="box-info right">
+            <div class="box-img">
+              {% if section.settings.img_banner2 != blank %}
+              <a  href="{{section.settings.url_banner2}}"><img src="{{section.settings.img_banner2 | img_url:'master'}}" class="img-fluid"></a>
+              {% else %}
+              <a  href="{{section.settings.url_banner2}}"><img src="//placehold.it/589x657" class="img-fluid" alt=""></a>
+              {% endif %}
+            </div>
+            <div class="content-banner">
+              {% if section.settings.title_2 != blank %}
+              <h3 class="title mb-0">
+                <a class="link_hover" href="{{section.settings.url_banner2}}">{{section.settings.title_2}}</a>
+              </h3>
+              {% if section.settings.button_2 != blank %}
+              <a href="{{section.settings.url_button2}}" class="button-shop">{{section.settings.button_2}}</a>
+              {% endif %}              
+            </div>
+
+            {% endif %}
+            {% if section.settings.sub_title2 != blank %}
+            <span class="label_text"><span class="text">{{section.settings.sub_title2}}</span></span>
+            {% endif %}
+
+          </div>
+        </div>
+     
+      </div>
+      <div class="row towrow">
+        <div class="col-lg-6 col-12 col-md-6">
+          <div class="box-info left">
+            <div class="box-img">
+              {% if section.settings.img_banner3 != blank %}
+              <a  href="{{section.settings.url_banner3}}"><img src="{{section.settings.img_banner3 | img_url:'master'}}" class="img-fluid"></a>
+              {% else %}
+              <a  href="{{section.settings.url_banner3}}"><img src="//placehold.it/589x657" class="img-fluid" alt=""></a>
+              {% endif %}
+            </div>
+            <div class="content-banner">
+              {% if section.settings.title_3 != blank %}
+              <h3 class="title mb-0">
+                <a class="link_hover" href="{{section.settings.url_banner3}}">{{section.settings.title_3}}</a>
+              </h3>
+              {% if section.settings.button_3 != blank %}
+              <a href="{{section.settings.url_button3}}" class="button-shop">{{section.settings.button_3}}</a>
+              {% endif %}              
+            </div>
+
+            {% endif %}
+            {% if section.settings.sub_title3 != blank %}
+            <span class="label_text"><span class="text">{{section.settings.sub_title3}}</span></span>
+            {% endif %}
+
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-12 col-md-6">
+          <div class="block-custom-1 right">
+            <div class="list-inline"> 
+              {% if section.settings.title_4 != blank %}
+              <h3 class="title mb-0 list-inline-item"><a class="link_hover" href="{{section.settings.url_button4}}">{{section.settings.title_4}}</a></h3>
+              {% endif %}
+
+              {% if section.settings.title_icon1 != blank %}
+              <span class="icon list-inline-item"><i class="{{section.settings.title_icon1}}"></i></span>
+              {% endif %}
+            </div>
+            {% if section.settings.button_3 != blank %}
+            <a href="{{section.settings.url_button4}}" class="button-shop">{{section.settings.button_4}}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+
+{
+  "name": "Collection v2",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner1",
+      "label": "Image",
+      "info": "589 x 657px recommended"
+    },
+    {
+      "type": "url",
+      "id": "url_banner1",
+      "label": "URL banner and title",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title banner 1",
+      "default": "Spring Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_1",
+      "label": "button banner",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "url_button1",
+      "label": "URL button 1",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "sub_title1",
+      "label": "Sub Title banner",
+      "default": "Sale up to 30% today"
+    },
+    {
+      "type": "header",
+      "content": "Banner 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner2",
+      "label": "Image",
+      "info": "589 x 657px recommended"
+    },
+    {
+      "type": "url",
+      "id": "url_banner2",
+      "label": "URL banner and title",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title banner 2",
+      "default": "Men Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_2",
+      "label": "button banner",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "url_button2",
+      "label": "URL button 2",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "sub_title2",
+      "label": "Sub Title banner",
+      "default": "CONTRASTING COLLAR"
+    },
+    {
+      "type": "header",
+      "content": "Banner 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner3",
+      "label": "Image",
+      "info": "589 x 657px recommended"
+    },
+    {
+      "type": "url",
+      "id": "url_banner3",
+      "label": "URL banner and title",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title banner 3",
+      "default": "Sneaker Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_3",
+      "label": "button banner",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "url_button3",
+      "label": "URL button 3",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "sub_title3",
+      "label": "Sub Title banner",
+      "default": "Free Shipping Over 300$"
+    },
+    {
+      "type": "header",
+      "content": "Banner 4"
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Title banner 4",
+      "default": "Top Collection"
+    },
+    {
+      "type": "text",
+      "id": "title_icon1",
+      "label": "Icon",
+      "default": "icon-icon-arrow",
+      "info": "[Get icon in here](https:\/\/fontawesome.com\/v4.7.0\/icons)"
+    },
+    {
+      "type": "text",
+      "id": "button_4",
+      "label": "button banner",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "url_button4",
+      "label": "URL button 4 and url title ",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "sub_title4",
+      "label": "Sub Title banner",
+      "default": "Free Shipping Over 400$"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection v2",
+      "category": "HOME 5"
+    }
+  ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

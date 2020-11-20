@@ -1,0 +1,71 @@
+<footer class="footer_v6">
+  <div class="top-footer">
+    <div class="container container-v2">    
+      <div class="row">
+        <div class="col-lg-6 col-md-6 pr-md-0 text-center">
+          <div class="info_footer brleft">
+            {% if settings.title_social_fv6 != blank %}        
+              <h4 class="mb-0 title_footer">{{settings.title_social_fv6}}</h4>         
+            {% endif %}
+            <div class="list-icon">
+              <ul class="list-inline list-unstyled mb-0">
+                {% if settings.icon_sc_fv6_1 !=blank %}
+                <li class="list-inline-item mr-0">
+                  <a href="{{settings.url_sc_fv6_1}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv6_1}}"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.icon_sc_fv6_2 !=blank %}
+                <li class="list-inline-item mr-0">
+                  <a href="{{settings.url_sc_fv6_2}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv6_2}}"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.icon_sc_fv6_3 !=blank %}
+                <li class="list-inline-item mr-0">
+                  <a href="{{settings.url_sc_fv6_3}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv6_3}}"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.icon_sc_fv6_4 !=blank %}
+                <li class="list-inline-item mr-0">
+                  <a href="{{settings.url_sc_fv6_4}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv6_4}}"></i></a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+            {% if settings.menu_fv6_1 != blank %}
+            <div class="menu-footer">
+              <ul class="list-inline list-unstyled mb-0">
+                {% for link in linklists[settings.menu_fv6_1].links %}
+                <li class="list-inline-item mr-0"><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 pl-md-0 text-center">
+          <div class="info_footer">
+            {% if settings.title_contact_fv6 != blank %}         
+              <h4 class="mb-0 title_footer">{{settings.title_contact_fv6}}</h4>         
+            {% endif %}
+            {% if settings.content_right_fv6_1 != blank %}
+            <p class="mb-0 content-contact">{{settings.content_right_fv6_1}}</p>
+            {% endif %}
+            
+            {% if settings.content_right_fv6_2 != blank %}
+            <p class="mb-0 content-email">{{settings.content_right_fv6_2}}</p>
+            {% endif %}            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if settings.enable_fv6_bottom_copyright %}
+  <div class="copyright-footer text-center">
+    {% if settings.fv6_bottom_copyright != blank %}
+    <p class="mb-0 text-bottom-footer">{{settings.fv6_bottom_copyright}}</p>
+    {% else %}
+    <p class="mb-0 text-bottom-footer">COPYRIGHT @ {{ 'now' | date: "%Y" }} Eveland </p>
+    {% endif %}
+  </div>
+  {% endif %}  
+</footer>

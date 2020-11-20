@@ -1,0 +1,105 @@
+<div class="sidebar sidebar-left">
+  {% if section.settings.enable_categories_product %}
+  <div class="widget widget-category">
+    <h2 class="widget-title title14 font-bold dosis-font text-uppercase">{{section.settings.widget_cate_title}}</h2>
+    <div class="widget-content">
+      <ul class="list-category-toggle toggle-tab list-none">
+        {% for link in linklists[section.settings.widget_cate_menu].links %}
+
+        {% assign item = link.title | downcase %}
+        {% assign child_list_handle = link.title | handleize %}
+
+        {% if linklists[child_list_handle].links != blank %}
+        <li class="item-toggle-tab {% if forloop.first %}active{% endif %}">
+          <a class="toggle-tab-title" href="#">{{ link.title }}</a>
+          <ul class="toggle-tab-content list-none">
+            {% for childlink in linklists[child_list_handle].links %}
+            <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        {% else %}
+        <li class="item-toggle-tab"><a style="padding: 8px 0;display: block;" href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endif %}
+
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if section.settings.enable_categories_product %}
+  
+  {%- assign best_product_limit = section.settings.best_product_limit -%}
+  {%- assign best_col = section.settings.best_product_collection -%}
+  
+  <div class="widget widget-product-type">
+    <h2 class="widget-title title14 font-bold text-uppercase">{{section.settings.best_product_title}}</h2>
+    <ul class="list-none">
+      {% for product in collections[best_col].products limit: best_product_limit %}
+      <li>
+        <div class="item-product item-product-table table-custom">
+          <div class="product-thumb">
+            <a href="{{product.url}}" class="product-thumb-link zoom-thumb">
+              <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}">
+            </a>
+          </div>
+          <div class="product-info">
+            <h3 class="title14 product-title"><a href="{{product.url}}">{{product.title}}</a></h3>
+            <div class="product-price title14 dosis-font">
+              {% capture price %}{{ product.price | money }}{% endcapture %}
+              {% if product.compare_at_price > product.price %} <del class="silver">{{ product.compare_at_price | money }}</del> {% endif %}
+              <ins class="dark">{% if product.price_varies %}{{ 'products.general.from_text_html' | t: price: price }}{% else %}{{ price }}{% endif %}</ins>
+            </div>
+          </div>
+        </div>
+      </li>
+      {% else %}
+      {% for i in (1..5) %}
+      <li>
+        <div class="item-product item-product-table table-custom">
+          <div class="product-thumb">
+            <a href="/admin/products" class="product-thumb-link zoom-thumb">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </a>
+          </div>
+          <div class="product-info">
+            <h3 class="title14 product-title"><a href="/admin/products">Example Product</a></h3>
+            <div class="product-price title14 dosis-font">
+              <del class="silver">$400.00</del>
+              <ins class="dark">$300.00</ins>
+            </div>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  
+  {% if section.settings.enable_categories_product %}
+  <div class="widget widget-tags">
+    <h2 class="widget-title title14 font-bold dosis-font text-uppercase">{{section.settings.shop_by_tag_title}}</h2>
+    <ul class="list-none wg-list-tags">
+      {% for tag in product.tags %}
+      <li>{{ tag | link_to_tag: tag }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  
+  {% if section.settings.enable_categories_product %}
+  <div class="widget widget-search">
+    <h2 class="widget-title title14 font-bold dosis-font text-uppercase">{{section.settings.shop_by_search_title}}</h2>
+
+    <form class="wg-search-form" action="/search">
+      <input type="text" placeholder="{{section.settings.shop_by_search_placeholder}}" name="q" value="{{ search.terms | escape }}"  />
+      <input type="submit" value="" />
+    </form>
+
+  </div>
+  {% endif %}
+</div>

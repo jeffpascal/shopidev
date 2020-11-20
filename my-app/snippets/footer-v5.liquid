@@ -1,0 +1,66 @@
+<footer class="footer_v5">
+  <div class="container container-v1">    
+    <div class="row align-items-center">
+      <div class="col-lg-5">
+        <div class="menu_footer">
+          <ul class="list-inline list-unstyled mb-0">
+            {% for link in linklists[settings.menu_fv5_1].links %}
+            <li class="list-inline-item mr-0"><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>        
+        </div>
+      </div>
+      <div class="col-lg-2 text-center">
+        <div class="logo-footer">
+          {% if settings.logo_svg5 !=blank %}
+          <div class="logosvg" style="max-width:{{settings.fv5_main_logo_maxwidth}}px;">
+            <a class="d-block" href="{{shop.url}}">{{settings.logo_svg5}}</a>
+          </div>          
+          {% else %}            
+          <a href="{{shop.url}}" class="logo">
+            {% if settings.fv5_main_logo != blank %}
+            <img src="{{settings.fv5_main_logo | img_url:'master'}}"  width="{{settings.fv5_main_logo_maxwidth}}" alt="{{shop.name}}" class="img-fluid">
+            {% else %}
+            <img src="//placehold.it/45x45" width="{{settings.fv5_main_logo_maxwidth}}" alt="{{shop.name}}" class="img-fluid">
+            {% endif %}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <p class="mb-0 content-footer float-lg-right">{{settings.content_colum_fv5_4}}</p>
+          </div>
+          <div class="col-lg-6">
+            <div class="list-icon float-lg-right">
+              <ul class="list-inline list-unstyled mb-0">
+                {% if settings.icon_sc_fv5_1 !=blank %}
+                <li class="list-inline-item mr-0">
+                  <a href="{{settings.url_sc_fv5_1}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv5_1}}"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.icon_sc_fv5_2 !=blank %}
+                <li class="list-inline-item mr-0">
+                  <a href="{{settings.url_sc_fv5_2}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv5_2}}"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.icon_sc_fv5_3 !=blank %}
+                <li class="list-inline-item mr-0">
+                  <a href="{{settings.url_sc_fv5_3}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv5_3}}"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.icon_sc_fv5_4 !=blank %}
+                <li class="list-inline-item mr-0">
+                  <a href="{{settings.url_sc_fv5_4}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv5_4}}"></i></a>
+                </li>
+                {% endif %}         
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

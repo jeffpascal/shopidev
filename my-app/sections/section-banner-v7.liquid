@@ -1,0 +1,208 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v7" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-banner-v7">
+    <div class="d-flex w-100 rowtop align-items-center">
+      <div class="w-50 info text-center">
+        {% if section.settings.title_icon1 != blank %}
+        <div class="icon-title">
+          <span class="{{section.settings.title_icon1}}"></span>
+        </div>
+        {% endif %}
+        
+        {% if section.settings.title_top != blank %}
+        <div class="title-banner-top">
+          <h3 class="title">{{section.settings.title_top}}</h3>
+        </div>
+        {% endif %}
+        
+        {% if section.settings.content_top != blank %}
+        <p class="mb-0 content">{{section.settings.content_top}}</p>
+        {% endif %}
+        
+        {% if section.settings.button != blank %}
+        <a href="{{section.settings.url_button}}" class="button-shop">{{section.settings.button}}</a>
+        {% endif %}
+        
+      </div>
+      <div class="w-50 picture">
+        <div class="box-img w-100">
+          {% if section.settings.img_banner1 != blank %}
+          <a href="{{section.settings.url_banner1}}"><img src="{{section.settings.img_banner1 | img_url:'master'}}" class="img-fluid w-100"></a>
+          {% else %}
+          <a href="{{section.settings.url_banner1}}"><img src="//placehold.it/940x900" class="img-fluid w-100" alt=""></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <div class="d-flex w-100 rowbottom align-items-center">    
+      
+      <div class="w-50 picture order-2 order-lg-1">
+        <div class="box-img w-100">
+          {% if section.settings.img_banner2 != blank %}
+          <a href="{{section.settings.url_banner2}}"><img src="{{section.settings.img_banner2 | img_url:'master'}}" class="img-fluid w-100"></a>
+          {% else %}
+          <a href="{{section.settings.url_banner2}}"><img src="//placehold.it/940x900" class="img-fluid w-100" alt=""></a>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="w-50 info text-center order-1 order-lg-2">
+        {% if section.settings.title_icon2 != blank %}
+        <div class="icon-title">
+          <span class="{{section.settings.title_icon2}}"></span>
+        </div>
+        {% endif %}
+        
+        {% if section.settings.title_bottom != blank %}
+        <div class="title-banner-top">
+          <h3 class="title">{{section.settings.title_bottom}}</h3>
+        </div>
+        {% endif %}
+        
+        {% if section.settings.content_top2 != blank %}
+        <p class="mb-0 content">{{section.settings.content_top2}}</p>
+        {% endif %}
+        
+        {% if section.settings.button != blank %}
+        <a href="{{section.settings.url_button}}" class="button-shop">{{section.settings.button}}</a>
+        {% endif %}
+
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% schema %}
+
+{
+  "name": "Banner v7",
+  "settings": [
+   {
+      "type": "header",
+      "info": "MailChimp form action URL: Setting in Login Store > Customize theme > Theme settings tab > Mailchimp",
+      "content": "Newsletter"
+    },
+    {
+      "type": "header",
+      "content": "Info top left"
+    },
+    {
+      "type": "text",
+      "id": "title_icon1",
+      "label": "Icon",
+      "default": "icon-icon-torch",
+      "info": "[Get icon in here](https:\/\/fontawesome.com\/v4.7.0\/icons)"
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Title banner top",
+      "default": "About Us"
+    },
+    {
+      "type": "textarea",
+      "id": "content_top",
+      "label": "Content top 1",
+      "default": "Bestbike is a London based jewellery brand. Each piece in our collection has been meticulously designed in our studio near London Bridge and embodies our principals of simplicity, detail and understated masculinity. Our collection of Pendants, Cuffs and Rings have been designed to be worn individually or layered and stacked together."
+    },
+
+    {
+      "type": "text",
+      "id": "title_icon2",
+      "label": "Icon",
+      "default": "icon-icon-torch",
+      "info": "[Get icon in here](https:\/\/fontawesome.com\/v4.7.0\/icons)"
+    },
+{
+      "type": "textarea",
+      "id": "content_top2",
+      "label": "Content top 2",
+      "default": "Bestbike is a London based jewellery brand. Each piece in our collection has been meticulously designed in our studio near London Bridge and embodies our principals of simplicity, detail and understated masculinity. Our collection of Pendants, Cuffs and Rings have been designed to be worn individually or layered and stacked together."
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "button",
+      "default": "ShOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "url_button",
+      "label": "URL button",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Info top right"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner1",
+      "label": "Image top right",
+      "info": "940 x 900px recommended"
+    },
+    {
+      "type": "url",
+      "id": "url_banner1",
+      "label": "URL images top right",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Info bottom left"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner2",
+      "label": "Image bottom left",
+      "info": "940 x 900px recommended"
+    },
+    {
+      "type": "url",
+      "id": "url_banner2",
+      "label": "URL images bottom left",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Info bottom right"
+    },
+    {
+      "type": "text",
+      "id": "title_bottom",
+      "label": "Title banner botom",
+      "default": "SUBSCRIBE"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner v7",
+      "category": "HOME 6"
+    }
+  ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

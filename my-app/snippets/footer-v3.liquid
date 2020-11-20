@@ -1,0 +1,63 @@
+<footer class="footer_v3">
+  <div class="container container-v2">    
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="logo-top">
+          {% if settings.logo_svg3 !=blank %}
+          <div class="logosvg" style="max-width:{{settings.fv3_main_logo_maxwidth}}px;">
+            <a class="d-block" href="{{shop.url}}">{{settings.logo_svg3}}</a>
+          </div>          
+          {% else %}          	
+          <a href="{{shop.url}}" class="logo">
+            {% if settings.fv3_main_logo != blank %}
+            <img src="{{settings.fv3_main_logo | img_url:'master'}}"  width="{{settings.fv3_main_logo_maxwidth}}" alt="logo">
+            {% else %}
+            <img src="//placehold.it/95x35" width="{{settings.fv3_main_logo_maxwidth}}" alt="logo">
+            {% endif %}
+          </a>
+          {% endif %}
+        </div>
+        <div class="menu">
+          <ul class="list-inline list-unstyled mb-0 menu">
+            {% for link in linklists[settings.menu_fv3].links %}
+            <li class="list-inline-item mr-0"><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="eveland-socials">
+          <ul class="list-inline list-unstyled mb-0">
+            {% if settings.icon_sc_fv3_1 !=blank %}
+            <li class="list-inline-item mr-0 mb-0">
+              <a href="{{settings.url_sc_fv3_1}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv3_1}}"></i></a>
+            </li>
+            {% endif %}
+            {% if settings.icon_sc_fv3_2 !=blank %}
+            <li class="list-inline-item mr-0 mb-0">
+              <a href="{{settings.url_sc_fv3_2}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv3_2}}"></i></a>
+            </li>
+            {% endif %}
+            {% if settings.icon_sc_fv3_3 !=blank %}
+            <li class="list-inline-item mr-0 mb-0">
+              <a href="{{settings.url_sc_fv3_3}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv3_3}}"></i></a>
+            </li>
+            {% endif %}
+            {% if settings.icon_sc_fv3_4 !=blank %}
+            <li class="list-inline-item mr-0 mb-0">
+              <a href="{{settings.url_sc_fv3_4}}" title="" target="_blank" class="social-item"><i class="{{settings.icon_sc_fv3_4}}"></i></a>
+            </li>
+            {% endif %}        	
+
+          </ul>
+        </div>
+
+        {% if settings.fv3_bottom_copyright != blank %}
+        <p class="copyright text-center mb-0">{{settings.fv3_bottom_copyright}}</p>
+        {% else %}
+        <p class="copyright text-center mb-0">Website by Famithemes. Copyright Evelandshop</p>
+
+        {% endif %}
+      </div>
+    </div>
+  </div> 
+</footer>

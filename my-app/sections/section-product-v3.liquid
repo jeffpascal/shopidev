@@ -1,0 +1,136 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-product-v3" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-product-v3">
+    <div class="container container-v2">
+      {% if section.settings.title-section != blank %}
+      <h3 class="title-section text-center mb-0 title-heading">{{section.settings.title-section}}</h3>
+      {% endif %}
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+        <ul class="nav nav-tabs title-tab justify-content-center">
+          {% if section.blocks.size > 0 %}
+          {%- assign i = 1 -%}
+          {% for block in section.blocks %}
+
+          <li>
+            <a href="#a{{i}}" data-toggle="tab" class="{% if forloop.first %}active{% endif %}">{{block.settings.tab_title}}</a>
+          </li>
+          {%- assign i = i | plus : 1 -%}
+
+          {% endfor %}
+          {% endif %}
+        </ul>
+        </div>
+      </div>
+      <div class="tab-content">
+        {% if section.blocks.size > 0 %}
+        {%- assign i = 1 -%}
+        {% for block in section.blocks %}
+        {% assign products_limit = block.settings.tab_limit %}
+        {% assign col = block.settings.tab_collection %}
+
+        <div id="a{{i}}" class="tab-pane fade {% if forloop.first %}show active{% endif %}">
+          <div class="row">
+            {% for product in collections[col].products limit: products_limit %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6 product-tab-pd">
+              {% include 'product-item-v1' %}
+            </div>
+            {% else %}
+            {% for i in (1..8) %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6 product-tab-pd">
+              {% include 'empty-product-item' %}
+            </div>
+            {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+        {%- assign i = i | plus : 1 -%}
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "Product v3",
+"settings": [
+{
+"type": "text",
+"id": "title-section",
+"label": "Title Section Product",
+"default": "features"
+},
+{
+"type": "header",
+"content": "Section Space"
+},
+{
+"type": "text",
+"id": "margin_top",
+"label": "Margin Top",
+"info": "Defined in pixels. Do not add the 'px' unit."
+},
+{
+"type": "text",
+"id": "margin_bottom",
+"label": "Margin Bottom",
+"info": "Defined in pixels. Do not add the 'px' unit."
+}
+],
+"blocks": [
+{
+"type": "tab",
+"name": "Tab",
+"settings": [
+{
+"type": "text",
+"id": "tab_title",
+"label": "Title tab",
+"default": "New Products"
+},
+{
+"type": "collection",
+"id": "tab_collection",
+"label": "Chose collection"
+},
+{
+"type": "range",
+"id": "tab_limit",
+"min": 2,
+"max": 50,
+"step": 1,
+"label": "Limit Products",
+"default": 8
+}
+]
+}
+],
+"presets": [
+{
+"name": "Product v3",
+"category": "HOME 2",
+"blocks": [
+{
+"type": "tab",
+"settings": {
+"tab_title": "New Arrivals"
+}
+},
+{
+"type": "tab",
+"settings": {
+"tab_title": "Best Sellers"
+}
+},
+{
+"type": "tab",
+"settings": {
+"tab_title": "Top Rates"
+}
+}
+]
+}
+]
+}
+{% endschema %}

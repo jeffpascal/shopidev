@@ -1,0 +1,77 @@
+<header id="header" class="header-v1-h1 js_height_hd jsheader1 d-none d-xl-block {% if settings.hdv1_enable_absolute %}header-absolute {% endif %}">
+  <div class="container container-v1">
+    <div class="row align-items-center">
+      <div class="col-lg-2">
+        <div class="logo">
+          <div class="center logo delay05">          	
+            {% if settings.hdv1_logo_svg !=blank %}
+            <div class="logosvg" style="max-width:{{settings.hdv1_logo_maxwidth}}px;">
+              <a class="logourl" href="{{shop.url}}">{{settings.hdv1_logo_svg}}</a>
+            </div>
+            {% else %}          	
+            <a href="{{shop.url}}">
+              {% if settings.hdv1_logo != blank %}
+              <img src="{{settings.hdv1_logo|img_url:'master'}}" width="{{settings.hdv1_logo_maxwidth}}" alt="{{shop.name}}">
+              {% else %}
+              <img src="//placehold.it/160x46" width="{{settings.hdv1_logo_maxwidth}}" alt="{{shop.name}}">
+              {% endif %}
+            </a>
+            {% endif %}          
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="menu right">
+          {% include 'eveland-menu' %}
+        </div>
+      </div>
+      <div class="col-lg-3 currencies-login"> 
+
+        {% if settings.enable_currency %}
+        <div class="currencies">
+          {% include 'currency-picker' %}
+        </div>
+        {% endif %}
+        {% if settings.enable_language %}
+        <div class="change_language">
+          {% include 'change-language' %}
+        </div>
+        {% endif %}
+
+        <div class="cart-login-search align-items-center"> 
+          <ul class="list-inline list-unstyled mb-0">
+            <li class="list-inline-item mr-0">
+              <a href="javascript:void(0)" class="search js-search-destop">
+                {% if settings.hd_icon_search_svg != blank %}
+                {{settings.hd_icon_search_svg}}
+                {% else %}
+                <i class="{{settings.hd_icon_search}}"></i>
+                {% endif %}
+              </a>
+            </li>
+            <li class="list-inline-item mr-0">
+              <a href="{% if customer %}/account {% else %}javascript:void(0){% endif %}" class="login {% if customer %}{% else %}js-call-popup-login{% endif %}">
+                {% if settings.hd_icon_login_svg != blank %}
+                {{settings.hd_icon_login_svg}}
+                {% else %}
+                <i class="{{settings.hd_icon_login}}"></i>
+                {% endif %}
+              </a>
+            </li>
+            <li class="list-inline-item mr-0">
+              <a href="javascript:void(0)" class="cart js-call-minicart">
+                {% if settings.hd_icon_cart_svg != blank %}
+                {{settings.hd_icon_cart_svg}}
+                {% else %}
+                <i class="{{settings.hd_icon_cart}}"></i>
+                {% endif %}
+                <span class="number-cart enj-cartcount" style="color: {{settings.hdv1_bg_header}}">{{ cart.item_count }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</header>

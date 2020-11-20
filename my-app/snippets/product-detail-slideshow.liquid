@@ -1,0 +1,35 @@
+<div class="wrap-shop-banner {% if section.settings.slideshow_layout == "normal" %}container{% endif %}">
+  <div class="banner-slider banner-slider2 banner-slider-shop bg-slider parallax-slider">
+    <div class="wrap-item" data-transition="fade" data-navigation="true" data-itemscustom="[[0,1]]">
+      {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+      {% if block.type == "slideshow" %}
+      <div class="item-slider item-slider2">
+        <div class="banner-thumb">
+          <a href="{{block.settings.slider_url}}">
+            {% if block.settings.slider_bg == blank %}
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            {% else %}
+            <img src="{{block.settings.slider_bg|img_url:'master'}}" alt="" />
+            {% endif %}
+          </a>
+        </div>
+        <div class="banner-info animated {% if block.settings.text_alignment == "left" %}text-left{% elsif block.settings.text_alignment == "center" %}text-center{% elsif block.settings.text_alignment == "right" %}text-right{% endif %}" data-animated="{{block.settings.text_effect}}">
+          {% if block.settings.slider_content1 != blank %}
+          <h2 class="title48 dosis-font font-light text-uppercase white">{{block.settings.slider_content1}}</h2>
+          {% endif %}
+          {% if block.settings.slider_content2 != blank %}
+          <h3 class="title18 text-uppercase dosis-font font-light white">{{block.settings.slider_content2}}</h3>
+          {% endif %}
+          {% if block.settings.slider_btn_name != blank %}
+          <a href="{{block.settings.slider_url}}" class="border-button white title18">{{block.settings.slider_btn_name}}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>

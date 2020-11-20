@@ -1,0 +1,194 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-slideshow-v6" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-slideshow-v6">
+    <div class="slick-side-h6">       
+      {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+      {% if block.type == "slideshow" %}
+      <div class="itemv-slide-h6">
+        <div class="info-sideh6">
+          <div class="picture-slideshow">
+            {% if block.settings.block_banerimage != blank %}
+            <img src="{{block.settings.block_banerimage | img_url: 'master'}}" class="img-responsive img_slideh4" alt="">
+            {% else %}
+            <img src="//placehold.it/1881x1036" class="img-responsive img_slideh4" alt="slideshow">
+            {% endif %}
+          </div>
+          <div class="container container-v1">
+            <div class="box-content">
+              <div class="subtitle">
+                {% if block.settings.block_subtitle != blank %}
+                <p class="mb-0" style="color:{{block.settings.color_subtitle}};">{{block.settings.block_subtitle}}</p>
+                {% endif %}
+              </div>
+              <div class="slide-title">
+                {% if block.settings.block_title != blank %}
+                <span class="" style="color: {{block.settings.color_title}}">{{block.settings.block_title}}</span>
+                {% endif %}
+              </div>
+
+              {% if block.settings.block_buton != blank %}
+              <div class="box-button">
+                <a class="button-shop-{{section.id}}-{{block.id}}" href="{{block.settings.block_url}}" style="color:{{block.settings.color_block_button}}; background-color:{{block.settings.color_bg_block_button}}">
+                  {{ block.settings.block_buton }}
+                </a>
+              </div>
+              {% endif %}              
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+<style>
+  {% for block in section.blocks %}
+  {% if block.type == 'slideshow' %}
+  .section-slideshow-v6 .info-sideh6 .box-button .button-shop-{{section.id}}-{{block.id}} {
+  }
+  .section-slideshow-v6 .info-sideh6 .box-button .button-shop-{{section.id}}-{{block.id}}:hover{
+    background-color: {{block.settings.color_bg_block_button_hover}} !important;
+    color: {{block.settings.color_block_button_hover}}!important;
+  }
+  {% endif %}
+  {% endfor %}
+</style>
+{% schema %}
+{
+  "name": "Slideshow v6",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slideshow",
+      "name": "slideshow",
+      "settings": [
+		{
+          "type": "image_picker",
+          "id": "block_banerimage",
+          "label": "Image slideshow",
+          "info": "1881 x 1036px recommended"
+        },
+
+		{
+          "type": "text",
+          "id": "block_subtitle",
+          "label": "Sub Title sideshow",
+          "default": "SUMMER VINTAGE 2017"
+        },
+
+		{
+          "type": "text",
+          "id": "block_title",
+          "label": "Title sideshow",
+          "default": "SUMMER VINTAGE 2017"
+        },
+		{
+           "type": "color",
+           "id": "color_subtitle",
+           "label": "Color Sub Title sideshow",
+           "default": "#000"
+        },
+		{
+           "type": "color",
+           "id": "color_title",
+           "label": "Color Title sideshow",
+           "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "block_buton",
+          "label": "Button slideshow",
+          "default": "Shop now"
+        },
+		{
+           "type": "color",
+           "id": "color_block_button",
+           "label": "Color button",
+           "default": "#fff"
+        },
+		{
+           "type": "color",
+           "id": "color_block_button_hover",
+           "label": "Color button hover",
+           "default": "#fff"
+        },
+		{
+           "type": "color",
+           "id": "color_bg_block_button",
+           "label": "Color background button",
+           "default": "#222"
+        },
+		{
+           "type": "color",
+           "id": "color_bg_block_button_hover",
+           "label": "Color background button hover",
+           "default": "#48c8fd"
+        },
+        {
+          "type": "url",
+          "id": "block_url",
+          "label": "URL button slideshow",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow v6",
+      "category": "HOME 6",
+	  "blocks": [
+        {
+          "type": "slideshow",
+          "settings": {
+            "block_subtitle": "SUMMER VINTAGE 2017",
+			"block_buton": "Shop now"
+          }
+        },
+		 {
+          "type": "slideshow",
+          "settings": {
+            "block_subtitle": "EVELAND COLLECTION",
+			"block_buton": "Shop now"
+          }
+        },
+		 {
+          "type": "slideshow",
+          "settings": {
+            "block_subtitle": "SPRING COLLECTION",
+			"block_buton": "Shop now"
+          }
+        }		
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,174 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-collection-v3" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-collection-v3">
+    <div class="container container-v1">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box-info">
+            <div class="box-img">
+              {% if section.settings.img_collection1 != blank %}
+              <a href="{{section.settings.url_collection1}}"><img src="{{section.settings.img_collection1 | img_url:'master'}}" class="img-fluid"></a>
+              {% else %}
+              <a href="{{section.settings.url_collection1}}"><img src="//placehold.it/942x900" class="img-fluid" alt=""></a>
+              {% endif %}
+            </div>
+            <div class="content-banner text-center">        
+              {% if section.settings.title_collection1 != blank %}
+              <h3 class="title mb-0">{{section.settings.title_collection1}}</h3>
+              {% endif %}
+              {% if section.settings.sub_title_collection1 != blank %}
+              <p class="sub-title mb-0">{{section.settings.sub_title_collection1}}</p>
+              {% endif %}
+
+              {% if section.settings.button_1 != blank %}
+              <a href="{{section.settings.url_button1}}" class="button-shop">{{section.settings.button_1}}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box-info">
+            <div class="box-img">
+              {% if section.settings.img_collection2 != blank %}
+              <a href="{{section.settings.url_collection2}}"><img src="{{section.settings.img_collection2 | img_url:'master'}}" class="img-fluid"></a>
+              {% else %}
+              <a href="{{section.settings.url_collection2}}"><img src="//placehold.it/942x900" class="img-fluid" alt=""></a>
+              {% endif %}
+            </div>
+            <div class="content-banner text-center">        
+              {% if section.settings.title_collection2 != blank %}
+              <h3 class="title mb-0">{{section.settings.title_collection2}}</h3>
+              {% endif %}
+
+              {% if section.settings.sub_title_collection2 != blank %}
+              <p class="sub-title mb-0">{{section.settings.sub_title_collection2}}</p>
+              {% endif %}
+
+              {% if section.settings.button_2 != blank %}
+              <a href="{{section.settings.url_button2}}" class="button-shop">{{section.settings.button_2}}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+
+{
+  "name": "Collection v3",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Info left"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_collection1",
+      "label": "Image collection 1",
+      "info": "942 x 900px recommended"
+    },
+    {
+      "type": "url",
+      "id": "url_collection1",
+      "label": "URL Collection 1",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "title_collection1",
+      "label": "Title Collection 1",
+      "default": "Men's Collection"
+    },
+	{
+      "type": "text",
+      "id": "sub_title_collection1",
+      "label": "Sub Title Collection 1",
+      "default": "FREE SHIPPNG FROM 300$"
+    },
+    {
+      "type": "text",
+      "id": "button_1",
+      "label": "button banner",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "url_button1",
+      "label": "URL button 1",
+      "default": "/collections/all"
+    },
+
+	{
+      "type": "header",
+      "content": "Info Right"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_collection2",
+      "label": "Image collection 2",
+      "info": "942 x 900px recommended"
+    },
+    {
+      "type": "url",
+      "id": "url_collection2",
+      "label": "URL Collection 2",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "title_collection2",
+      "label": "Title Collection 2",
+      "default": "Women's Collection"
+    },
+	{
+      "type": "text",
+      "id": "sub_title_collection2",
+      "label": "Sub Title Collection 2",
+      "default": "SALE UP TO 30%"
+    },
+    {
+      "type": "text",
+      "id": "button_2",
+      "label": "button banner",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "url_button2",
+      "label": "URL button 2",
+      "default": "/collections/all"
+    },	
+
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection v3",
+      "category": "HOME 6"
+    }
+  ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

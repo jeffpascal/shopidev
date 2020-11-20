@@ -1,0 +1,209 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v3" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-banner-v3">
+    <div class="bg_section">
+    </div>
+    <div class="container container-v1">
+      <div class="row">        
+        <div class="col-lg-6 col-md-6">
+          <div class="box-info">
+            <div class="box-img">
+              {% if section.settings.img_banner1 != blank %}
+              <a href="{{section.settings.url_banner1}}"><img src="{{section.settings.img_banner1 | img_url:'master'}}" class="img-fluid"></a>
+              {% else %}
+              <a href="{{section.settings.url_banner1}}"><img src="//placehold.it/822x509" class="img-fluid" alt=""></a>
+              {% endif %}
+            </div>
+            <div class="content-banner">
+              <div class="list-inline info-top"> 
+                {% if section.settings.title_1 != blank %}
+                <h3 class="title mb-0 list-inline-item">{{section.settings.title_1}}</h3>
+                {% endif %}
+              </div>
+              {% if section.settings.sub_title1 != blank %}
+              <p class="label_text mb-0">{{section.settings.sub_title1}}</p>
+              {% endif %}
+
+              {% if section.settings.button_1 != blank %}
+              <a href="{{section.settings.url_button1}}" class="button-shop" style="background-color:{{section.settings.color_button_1}}">{{section.settings.button_1}}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <div class="box-info">
+            <div class="box-img">
+              {% if section.settings.img_banner2 != blank %}
+              <a href="{{section.settings.url_banner2}}"><img src="{{section.settings.img_banner2 | img_url:'master'}}" class="img-fluid"></a>
+              {% else %}
+              <a href="{{section.settings.url_banner2}}"><img src="//placehold.it/822x509" class="img-fluid" alt=""></a>
+              {% endif %}
+            </div>
+            <div class="content-banner">
+              <div class="list-inline info-top"> 
+                {% if section.settings.title_2 != blank %}
+                <h3 class="title mb-0 list-inline-item">{{section.settings.title_2}}</h3>
+                {% endif %}
+              </div>
+              {% if section.settings.sub_title2 != blank %}
+              <p class="label_text mb-0">{{section.settings.sub_title2}}</p>
+              {% endif %}
+
+              {% if section.settings.button_2 != blank %}
+              <a href="{{section.settings.url_button2}}" class="button-shop" style="background-color:{{section.settings.color_button_2}}">{{section.settings.button_2}}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Banner v3",
+  "settings": [
+  	{
+      "type": "header",
+      "content": "setting banner 1"
+    },
+	{
+      "type": "color",
+      "id": "bg_color",
+      "label": "background color section",
+      "default": "#f8f8f8"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_banner1",
+      "label": "Image",
+	  "info": "822 x 509px recommended"
+    },
+  	{
+      "type": "url",
+      "id": "url_banner1",
+      "label": "URL images banner 1",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "title_1",
+      "label": "Title banner 1",
+      "default": "New season"
+    },
+	{
+      "type": "text",
+      "id": "sub_title1",
+      "label": "Sub Title banner 1",
+      "default": "Floral Prints "
+    },
+  	{
+      "type": "text",
+      "id": "button_1",
+      "label": "button 1",
+      "default": "ShOP NOW"
+    },
+    {
+      "type": "color",
+      "id": "color_button_1",
+      "label": "background color button 1",
+      "default": "#d4c9af"
+    },
+  	{
+      "type": "color",
+      "id": "color_hover",
+      "label": "background color hover button 1, 2",
+      "default": "#48c8fd"
+    },
+  	{
+      "type": "url",
+      "id": "url_button1",
+      "label": "URL button 1",
+      "default": "/collections/all"
+    },
+  	{
+      "type": "header",
+      "content": "setting banner 2"
+    },
+  {
+      "type": "image_picker",
+      "id": "img_banner2",
+      "label": "Image",
+    "info": "822 x 509px recommended"
+    },
+    {
+      "type": "url",
+      "id": "url_banner2",
+      "label": "URL images banner 2",
+      "default": "/collections/all"
+    },
+  {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title banner 2",
+      "default": "New season"
+    },
+  {
+      "type": "text",
+      "id": "sub_title2",
+      "label": "Sub Title banner 2",
+      "default": "Floral Prints "
+    },
+    {
+      "type": "text",
+      "id": "button_2",
+      "label": "button 2",
+      "default": "ShOP NOW"
+    },
+  	{
+      "type": "color",
+      "id": "color_button_2",
+      "label": "background color button 2",
+      "default": "#bf99c8"
+    },
+    {
+      "type": "url",
+      "id": "url_button2",
+      "label": "URL button 2",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner v3",
+      "category": "HOME 2"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<style>
+  .section-banner-v3 .box-info .content-banner .button-shop:hover{
+    background-color: {{section.settings.color_hover}} !important;
+  }
+  .section-banner-v3 .bg_section{
+    background-color:{{section.settings.bg_color}};
+  }
+</style>

@@ -1,0 +1,250 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v2" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-banner-v2">
+    <div class="vc-lg-50 banner">
+      <div class="category-item vc-lg-50">
+        <div class="inner border-scale">
+          <div class="thumb">
+            <a href="{{section.settings.url_banner2}}">
+              {% if section.settings.img_banner2 != blank %}
+              <img src="{{section.settings.img_banner2 | img_url:'master'}}" class="img-fluid w-100">
+              {% else %}
+               <img src="//placehold.it/471x422" class="img-fluid w-100" alt="">
+              {% endif %}
+            </a>
+          </div>
+          {% if section.settings.title_big2 != blank %}
+          <div class="info">
+            <h3 class="category-name">
+              <a class="link__hover" href="{{section.settings.url_banner2}}">{{section.settings.title_big2}}</a>
+            </h3>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="category-item vc-lg-50">
+        <div class="inner border-scale">
+          <div class="thumb">
+            <a href="{{section.settings.url_banner3}}">
+              {% if section.settings.img_banner3 != blank %}
+              <img src="{{section.settings.img_banner3 | img_url:'master'}}" class="img-fluid w-100">
+              {% else %}
+               <img src="//placehold.it/471x422" class="img-fluid w-100" alt="">
+              {% endif %}
+            </a>
+          </div>
+          {% if section.settings.title_big3 != blank %}
+          <div class="info">
+            <h3 class="category-name">
+              <a class="link__hover" href="{{section.settings.url_banner3}}">{{section.settings.title_big3}}</a>
+            </h3>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="category-item vc-lg-50">
+        <div class="inner border-scale">
+          <div class="thumb">
+            <a href="{{section.settings.url_banner4}}">
+              {% if section.settings.img_banner4 != blank %}
+              <img src="{{section.settings.img_banner4 | img_url:'master'}}" class="img-fluid w-100">
+              {% else %}
+              <img src="//placehold.it/471x422" class="img-fluid w-100" alt="">
+              {% endif %}
+            </a>
+          </div>
+          {% if section.settings.title_big4 != blank %}
+          <div class="info">
+            <h3 class="category-name">
+              <a class="link__hover" href="{{section.settings.url_banner4}}">{{section.settings.title_big4}}</a>
+            </h3>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="category-item vc-lg-50">
+        <div class="inner border-scale">
+          <div class="thumb">
+            <a href="{{section.settings.url_banner5}}">
+              {% if section.settings.img_banner5 != blank %}
+              <img src="{{section.settings.img_banner5 | img_url:'master'}}" class="img-fluid w-100">
+              {% else %}
+              <img src="//placehold.it/471x422" class="img-fluid w-100" alt="">
+              {% endif %}
+            </a>
+          </div>
+          {% if section.settings.title_big4 != blank %}
+          <div class="info">
+            <h3 class="category-name">
+              <a class="link__hover" href="{{section.settings.url_banner5}}">{{section.settings.title_big5}}</a>
+            </h3>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="box-img box-img-big vc-lg-50">
+      {% if section.settings.img_banner1 != blank %}
+      <a href="{{section.settings.url_banner1}}"><img src="{{section.settings.img_banner1 | img_url:'master'}}" class="img-fluid w-100"></a>
+      {% else %}
+        <a href="{{section.settings.url_banner1}}"><img src="//placehold.it/940x844" class="img-fluid w-100" alt=""></a>
+      {% endif %}
+      {% if section.settings.title_big1 != blank %}
+      <div class="info">
+        <h3 class="title"><a href="{{section.settings.url_banner1}}">{{section.settings.title_big1}}</a></h3>
+      </div>
+      {% endif %}
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Banner v2",
+  "settings": [
+  	{
+      "type": "header",
+      "content": "Banner 1 big left"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_banner1",
+      "label": "Image",
+	  "info": "940 x 844px recommended"
+    },
+  	{
+      "type": "url",
+      "id": "url_banner1",
+      "label": "URL button",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "title_big1",
+      "label": "Title banner 1",
+      "default": "Lookbook"
+    },
+  
+  	{
+      "type": "header",
+      "content": "Banner 2"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_banner2",
+      "label": "Image",
+	  "info": "471 x 422px recommended"
+    },
+  	{
+      "type": "url",
+      "id": "url_banner2",
+      "label": "URL button",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "title_big2",
+      "label": "Title banner 2",
+      "default": "Shose"
+    },
+  
+  	{
+      "type": "header",
+      "content": "Banner 3"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_banner3",
+      "label": "Image",
+	  "info": "471 x 422px recommended"
+    },
+  	{
+      "type": "url",
+      "id": "url_banner3",
+      "label": "URL button",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "title_big3",
+      "label": "Title banner 3",
+      "default": "Accessories"
+    },
+  
+  	{
+      "type": "header",
+      "content": "Banner 4"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_banner4",
+      "label": "Image",
+	  "info": "471 x 422px recommended"
+    },
+  	{
+      "type": "url",
+      "id": "url_banner4",
+      "label": "URL button",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "title_big4",
+      "label": "Title banner 4",
+      "default": "Watches"
+    },
+  
+  	{
+      "type": "header",
+      "content": "Banner 5"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_banner5",
+      "label": "Image",
+	  "info": "471 x 422px recommended"
+    },
+  	{
+      "type": "url",
+      "id": "url_banner5",
+      "label": "URL button",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "title_big5",
+      "label": "Title banner 5",
+      "default": "Watches"
+    },
+
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner v2",
+      "category": "HOME 2"
+    }
+  ]
+}
+{% endschema %}
+  
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

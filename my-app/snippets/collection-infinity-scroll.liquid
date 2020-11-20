@@ -1,0 +1,201 @@
+<section class="collection-page-fullwidth">
+  
+  <div class="filter-to-left">
+    <div class="filter_sidebar">
+      <div class="close_filter">{{'products.product.close' | t}} <i class="ti-close"></i></div>
+      {% include 'collection-sidebar' %}
+    </div>
+  	
+  </div>
+  <div class="overlay-filter"></div>
+       
+
+  <div class="content-page">
+    <div class="container container-v2">
+      {% if section.settings.ena_title_cate %}
+            <div class="title-cate">
+              <h2 class="mb-0">{{collection.title}}</h2>
+            </div>
+            {% endif %}
+      <div class="row shop_control " >
+
+        <div style="{% if section.settings.ena_filter == false and section.settings.ena_filter2 == false %} display: none {% endif %}" class="{% if section.settings.ena_list_col == false or section.settings.ena_prod_per == false and section.settings.ena_prod_change_style == false %}col-xl-6 {% else %} col-xl-3{% endif %} col-md-6 order-md-1 col-12 ">
+          <div class="filter_sortby">
+            {% if section.settings.ena_filter %}
+            <a class="filter {% if section.settings.filter_layout == "filter_push_left" %}js_filter{% endif %}" {% if section.settings.filter_layout == "filter_collapse" %} data-toggle="collapse" data-target="#demo" {% endif %} href="javascript:void(0)">
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 485.008 485.008" style="enable-background:new 0 0 485.008 485.008;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M171.501,464.698v-237.9l-166.3-192.6c-8.9-10.9-7.9-33.3,15.1-33.3h443.6c21.6,0,26.6,19.8,15.1,33.3l-162.3,187.5v147.2
+                             c0,6-2,11.1-7.1,15.1l-103.8,95.8C193.801,488.698,171.501,483.898,171.501,464.698z M64.701,41.298l142.2,164.3c3,4,5,8.1,5,13.1
+                             v200.6l64.5-58.5v-146.1c0-5,2-9.1,5-13.1l138.1-160.3L64.701,41.298L64.701,41.298z"/>
+                  </g>
+                </g>
+
+              </svg>
+              <p class="mb-0">{{'products.product.filter' | t}}</p>
+            </a>
+            {%  endif  %} 
+            
+            {% if section.settings.ena_filter2 %}
+            	{% include 'collection-sorting' %}
+            {% endif %}
+          </div>  
+        </div>
+        
+        {% if section.settings.ena_list_col %}
+        <div class=" col-xl-6 col-md-12 order-3 order-xl-2 col-12">
+            <ul class="list-collection js_list_col  {% if section.settings.ena_filter == false and section.settings.ena_filter2 == false or section.settings.ena_prod_per == false%} text-xl-left{% endif %} {% if section.settings.ena_prod_per == false and section.settings.ena_prod_change_style == false and section.settings.ena_filter == true and section.settings.ena_filter2 == true %} text-xl-right {% endif %} {% if section.settings.ena_filter == false and section.settings.ena_filter2 == false and section.settings.ena_prod_per == false%} text-xl-left{% endif %}">
+            {% for collection in collections %}
+            {% if collection.empty? %}
+            {% comment %}add default state for collection block in theme editor{% endcomment %}
+            {% assign collection_image_url = '' %}
+            {% else %}
+            {% if collection.image %}
+            {% capture collection_image_url %}{{ collection | img_url: 'master' }}{% endcapture %}
+            {% elsif collection.products.first %}
+            {% capture collection_image_url %}{{ collection.products.first | img_url: 'master' }}{% endcapture %}
+            {% endif %}
+            {% endif %}
+              <li class="title-collection"><a href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}">{{ collection.title }}</a></li>
+            {% endfor %}
+            </ul> 
+        
+        </div>
+        {% endif %}
+        
+        
+        <div style="{% if section.settings.ena_prod_change_style == false and section.settings.ena_prod_per == false %} display:none {% endif %}" class="{% if section.settings.ena_list_col == false  or section.settings.ena_filter == false  and section.settings.ena_filter2 == false  %}col-xl-6 {% else %} col-xl-3{% endif %}  col-md-6 order-2 order-xl-3 col-12">
+          <div class="style_layout_prod  justify-content-center {% if section.settings.ena_filter == false and section.settings.ena_filter == false and section.settings.ena_list_col == false%} justify-content-md-start{% else %} justify-content-md-end {% endif %} ">
+            {% if section.settings.ena_prod_change_style %}
+            <div class="prod_grid {% if section.settings.prod_layout == 'prod_grid' %}active{% endif %}">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="5px" height="5px" viewBox="0 0 5 5" enable-background="new 0 0 5 5" xml:space="preserve">
+                  <g>
+                    <g>
+                      <path d="M0,2.191h2.191V0H0V2.191z M0.626,0.626h0.939v0.939H0.626V0.626z"/>
+                      <path d="M2.81,0v2.191H5V0H2.81z M4.375,1.565h-0.94V0.626h0.94V1.565z"/>
+                      <path d="M0,5h2.191V2.809H0V5z M0.626,3.435h0.939v0.939H0.626V3.435z"/>
+                      <path d="M2.81,5H5V2.809H2.81V5z M3.435,3.435h0.94v0.939h-0.94V3.435z"/>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+             
+            <div class="prod_list {% if section.settings.prod_layout == 'prod_list' %}active{% endif %}">
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   width="5px" height="5px" viewBox="0 0 5 5" enable-background="new 0 0 5 5" xml:space="preserve">
+                <g>
+                  <rect y="0.683" width="3.629" height="0.454"/>
+                  <rect y="3.863" width="2.5" height="0.454"/>
+                  <rect y="2.267" width="5" height="0.453"/>
+                </g>
+              </svg>
+            </div>
+            {% endif %}
+            
+            {% if section.settings.ena_prod_per %}
+            <div class="prod_per">
+              <a href="javascript:void(0)" class="size_1 d-md-none">1</a>
+              <a href="javascript:void(0)" class="size_2 d-lg-none">2</a>
+              <a href="javascript:void(0)" class="size_3">3</a>
+              <a href="javascript:void(0)" class="size_4">4</a>
+              <a href="javascript:void(0)" class="size_5 ">5</a>
+              <a href="javascript:void(0)" class="size_6 ">6</a>
+            </div>
+            {% endif %}
+            
+            
+          </div>  
+        </div>
+        
+        
+      </div>
+      <div id="demo" class="collapse filter_ver2">
+        <div class="filter_sidebar row engoj-collection-sidebar engoc_sw_filter_tag">
+         {% include 'collection-droplist' %}
+        </div>  
+      </div>
+
+      <div class="clearfix relative collection_prod">   
+        <div class="product-grid-view {% if section.settings.prod_layout == 'prod_grid' %}active{% endif %} ">     
+          <div class="row grid-uniform">
+            {% for product in collection.products %}
+            <div class="js_size_prod col-md-4 col-lg-3 col-6 pb-4 trans-product">
+              {% include 'product-item-v1' %}
+            </div>
+            {% else %}
+            {% if collection.handle == 'all' and current_tags == '' %}
+
+            {% for i in (1..12) %}
+            <div class="col-lg-3 col-md-3">
+              {% include 'empty-product-item' %}
+            </div>
+            {% endfor %}
+
+            {% else %}
+
+            {% comment %}
+            If collection exists but is empty, display message
+            {% endcomment %}
+            <div class="text-center">
+              <p>{{ 'collections.general.no_matches' | t }}</p>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+
+          </div> 
+          <div class="col-12 justify-content-center loadmore pagination">
+            {% if paginate.next %}
+            <a class="btn-loadmore" href="{{ paginate.next.url }}">{{'products.general.load_more' | t}}</a>
+            {% endif %}
+            <div class="load-data d-none"></div>
+          </div>
+
+          <!-- End Paginav -->
+        </div>
+        <div class="product-list-view {% if section.settings.prod_layout == 'prod_list' %}active{% endif %} ">
+          <div class="prod_list">
+          {% for product in collection.products %}
+          <div class="list_prod">
+            {% include 'product-item-list' %}
+          </div>
+          {% else %}
+          {% if collection.handle == 'all' and current_tags == '' %}
+
+          {% for i in (1..12) %}
+          <div class="col-lg-3">
+            {% include 'empty-product-item' %}
+          </div>
+          {% endfor %}
+
+          {% else %}
+
+          {% comment %}
+          If collection exists but is empty, display message
+          {% endcomment %}
+          <div class="text-center">
+            <p>{{ 'collections.general.no_matches' | t }}</p>
+          </div>
+
+          {% endif %}
+          {% endfor %}
+            
+          </div>  
+          <div class="col-12 justify-content-center loadmore pagination">
+            {% if paginate.next %}
+            <a class="btn-loadmore" href="{{ paginate.next.url }}">{{'products.general.load_more' | t}}</a>
+            {% endif %}
+            <div class="load-data d-none"></div>
+          </div>
+              <!-- End Paginav -->
+        </div>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</section>

@@ -1,0 +1,124 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-service-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-service-v1" style="background-color:{{section.settings.bg_color}}">
+    <div class="container container-v2">
+        <div class="row slickjs-services-v1">
+          {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+          {% if block.type == "service" %}
+          <div class="text-center itemtservice justify-content-center">
+            <div class="box-service col-lg-12">
+              <span class="icon">          
+                <i class="{{block.settings.block_icon}} "></i>
+              </span>
+              {% if block.settings.block_title != blank %}
+              <h4 class="title">{{block.settings.block_title}}</h4>
+              {% endif %}
+              {% if block.settings.block_content != blank %}          	
+              <p class="content">{{block.settings.block_content}}</p>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Service v1",
+  "class": "index-section",
+  "settings": [
+	{
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color Section",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+    
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service V1",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_icon",
+          "label": "Icon",
+          "default": "icon-icon-transport",
+          "info": "[Get icon in here](https:\/\/fontawesome.com\/v4.7.0\/icons)"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Title",
+          "default": " FREE SHIPPING & RETURN"
+        },
+        {
+          "type": "text",
+          "id": "block_content",
+          "label": "Content",
+          "default": " If your glasses aren't perfect, return them within 30 days<br> for a full refund. We'll even pay shipping."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service v1",
+      "category": "HOME 2",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "block_icon": "icon-icon-transport",
+            "block_title": " Free two-day delivery",
+            "block_content": "On in-stock items ordered by 5:00 p.m."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "block_icon": "icon-icon-currency",
+            "block_title": " Special financing",
+            "block_content": "On in-stock items ordered by 5:00 p.m."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "block_icon": "icon-icon-flower",
+            "block_title": "Perfect Design",
+            "block_content": "On in-stock items ordered by 5:00 p.m."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

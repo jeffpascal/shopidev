@@ -1,0 +1,183 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-countdown-v2" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-countdown-v2">
+    <div class="container container-v1">
+      <div class="row">
+        <div class="col-lg-12">          
+          <div class="box-picture">
+            {% if section.settings.img_bg_countdown != blank %}
+            <img src="{{section.settings.img_bg_countdown | img_url:'master'}}" class="img-fluid">
+            {% else %}
+            <img src="//placehold.it/1640x750" class="img-fluid" alt="">
+            {% endif %}
+          </div>
+          <div class="info-section-countdow">
+            <div class="content">
+              <div class="box-content-countdow text-center">
+                {% if section.settings.title_countdow != blank %}
+                <div class="title-countdow">
+                  <h2 class="mb-0">{{section.settings.title_countdow}}</h2>
+                </div>
+                {% endif %}
+                <div class="info-product">
+                  {% if section.settings.title_product != blank %}
+                  <h3 class="mb-0">{{section.settings.title_product}}</h3>
+                  {% endif %}
+
+                  <div class="list-inline price-product-countdown">
+                    {% if section.settings.price_no_sale != blank %}
+                    <span class="no-sale list-inline-item">{{section.settings.price_no_sale}}</span>
+                    {% endif %}
+                    {% if section.settings.price_sale != blank %}
+                    <span class="sale list-inline-item">{{section.settings.price_sale}}</span>
+                    {% endif %}
+                  </div>
+                  {% if section.settings.label != blank %}
+                  <div class="label-hot">{{section.settings.label}}</div>
+                  {% endif %}
+
+                  {% if section.settings.button_1 != blank %}
+                  <div class="buy">
+                  	<a href="{{section.settings.url_button1}}" class="button-shop">{{section.settings.button_1}}</a>
+                  </div>
+                  {% endif %}
+
+                </div>
+              </div>
+              <div class="picture-time text-center">
+                <div class="img-top">
+                  {% if section.settings.img_bottom != blank %}
+                  <img src="{{section.settings.img_bottom | img_url:'master'}}" class="img-fluid">
+                  {% else %}
+                  <img src="//placehold.it/604x445" class="img-fluid" alt="">
+                  {% endif %}
+                </div>
+                <div class="time">
+                  {% if section.settings.timecountdow != blank %}
+                  <ul class="mb-0 list-inline list-unstyled " data-countdown="section-countdown-v2" data-date="{{section.settings.timecountdow}}">
+                  </ul>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Countdown v2",
+  "settings": [
+	{
+      "type": "text",
+      "id": "title_countdow",
+      "label": "Title Countdow",
+      "default": "Deal of the day"
+    },
+  	{
+      "type": "header",
+      "content": "setting banner 1"
+    },
+	{
+      "type": "color",
+      "id": "bg_color",
+      "label": "background color section",
+      "default": "#f8f8f8"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_bg_countdown",
+      "label": "Image background",
+	  "info": "1640 x 997px recommended"
+    },
+  	{
+      "type": "text",
+      "id": "title_product",
+      "label": "Title product",
+      "default": " Uniform Cares Watches "
+    },
+	{
+      "type": "url",
+      "id": "url_product",
+      "label": "URL product",
+      "default": "/collections/all"
+    },
+  	{
+      "type": "text",
+      "id": "price_no_sale",
+      "label": "Price No Sale",
+      "default": " $34.90 "
+    },
+  	{
+      "type": "text",
+      "id": "price_sale",
+      "label": "Price Sale",
+      "default": " $33.90 "
+    },
+  	{
+      "type": "text",
+      "id": "label",
+      "label": "label",
+      "default": " Hot "
+    },
+	{
+      "type": "header",
+      "content": "Setting Time"
+    },
+	{
+        "type": "text",
+        "id": "timecountdow",
+        "label": "Year-Month-Date-Time-Minute-Seconds",
+        "default": "2019-12-12-12-12-12"
+      },
+
+    {
+      "type": "text",
+      "id": "button_1",
+      "label": "button 1",
+      "default": "ShOP NOW"
+    },
+  	{
+      "type": "url",
+      "id": "url_button1",
+      "label": "URL button 1",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+	{
+      "type": "image_picker",
+      "id": "img_bottom",
+      "label": "Image top right",
+	  "info": "604 x 445px recommended"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown v2",
+      "category": "HOME 3"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

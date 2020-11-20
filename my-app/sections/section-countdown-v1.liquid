@@ -1,0 +1,174 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-countdown-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-countdown-v1 mt-all" style="background-image: url({% if section.settings.bg_img != blank %}{{section.settings.bg_img | img_url: 'master'}}{% else %}//placehold.it/1920x997{% endif %})">
+    <div class="container container-v2">
+      <div class="countdown justify-content-center text-center">
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <div class="countdown-img">
+              {% if section.settings.img_countdown != blank %}
+              <img src="{{section.settings.img_countdown | img_url:'master'}}" class="img-fluid bg_img">
+              {% else %}
+              <img src="//placehold.it/300x250" class="img-fluid bg_img" alt="">
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="content-countdown">
+              {% if section.settings.title_product != blank %}
+              <h3 class="title-product-countdown">
+                <a href="{{section.settings.url_product}}">
+                  {{section.settings.title_product}}
+                </a>
+              </h3>
+              {% endif %}
+              <div class="list-inline price-product-countdown">
+                {% if section.settings.price_no_sale != blank %}
+                <span class="no-sale list-inline-item">{{section.settings.price_no_sale}}</span>
+                {% endif %}
+                {% if section.settings.price_sale != blank %}
+                <span class="sale list-inline-item">{{section.settings.price_sale}}</span>
+                {% endif %}
+              </div>
+              {% if section.settings.label != blank %}
+              <span class="label-hot">{{section.settings.label}}</span>
+              {% endif %}
+
+              <div class="time">
+                {% if section.settings.timecountdow != blank %}
+                <ul class="mb-0 list-inline list-unstyled " data-countdown="section-countdown" data-date="{{section.settings.timecountdow}}">
+                </ul>
+                {% endif %}
+              </div>
+
+              {% if section.settings.button_1 != blank %}
+              <a href="{{section.settings.url_button1}}" class="button-shop">{{section.settings.button_1}}</a>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Countdown v1",
+  "settings": [
+  	{
+      "type": "header",
+      "content": "Background image"
+    },
+	{
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "Background Image",
+      "info": "1920 x 997px recommended"
+    },
+  	{
+      "type": "header",
+      "content": "Image"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_countdown",
+      "label": "Image background",
+	  "info": "485 x 640px recommended"
+    },
+  	{
+      "type": "text",
+      "id": "title_product",
+      "label": "Title product",
+      "default": " Uniform Cares Watches "
+    },
+	{
+      "type": "url",
+      "id": "url_product",
+      "label": "URL product",
+      "default": "/collections/all"
+    },
+  	{
+      "type": "text",
+      "id": "price_no_sale",
+      "label": "Price No Sale",
+      "default": " $34.90 "
+    },
+  	{
+      "type": "text",
+      "id": "price_sale",
+      "label": "Price Sale",
+      "default": " $33.90 "
+    },
+  	{
+      "type": "text",
+      "id": "label",
+      "label": "Sub title",
+      "default": "With the dogs on a mission to create a serum that would eliminate the canine allergies among the humans, their feline foes are on their paws hatching plans to obstruct the top secret canine project."
+    },
+	{
+      "type": "header",
+      "content": "Setting Time"
+    },
+	{
+        "type": "text",
+        "id": "timecountdow",
+        "label": "Year-Month-Date-Time-Minute-Seconds",
+        "default": "2020-12-12-12-12-12"
+      },
+
+    {
+      "type": "text",
+      "id": "button_1",
+      "label": "button 1",
+      "default": "ShOP NOW"
+    },
+  	{
+      "type": "url",
+      "id": "url_button1",
+      "label": "URL button 1",
+      "default": "/collections/all"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_bottom",
+      "label": "Image bottom",
+	  "info": "440 x 476px recommended"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+	
+  ],
+  "presets": [
+    {
+      "name": "Countdown v1",
+      "category": "HOME 2"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<style>
+  .section-countdown-v1 .bg_countdown{
+    background-color:{{section.settings.bg_color}};
+  }
+</style>

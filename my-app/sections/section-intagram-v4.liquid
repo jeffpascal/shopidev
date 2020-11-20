@@ -1,0 +1,190 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-instagram-v4" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+<div class="section-instagram-v4">
+  {% assign instafeed_img = '{{image}}' %}
+  {% assign instafeed_link = '{{link}}' %}
+
+  {% if section.settings.ins_userid != blank and section.settings.ins_access_token != blank %}
+  <script>
+    jQuery(document).ready(function($) {
+      var feed = new Instafeed({
+        get: 'user',
+        userId: '{{section.settings.ins_userid}}',
+        accessToken: '{{section.settings.ins_access_token}}',
+        template: '<div class="col-lg-3"> <div class="content box-img1"> <a href="{{instafeed_link}}" class="delay03 inline-block" target="_blank"><img src="{{instafeed_img}}" class="img-fluid">  </div> </a></div>',
+        target: 'engoj_section_instagram_v2',
+        resolution: 'standard_resolution',
+        limit: '{{section.settings.ins_limit_number}}',
+        after: engo_insv2
+      });
+      feed.run();
+
+      function engo_insv2() {
+        $('.js-instagram').slick({
+          arrows: true,
+          dots: false,
+          infinite: false,
+          autoplay: false,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          prevArrow: '<button type="button" class="slick-brand-prev fa fa-angle-left"></button>',
+          nextArrow: '<button type="button" class="slick-brand-next fa fa-angle-right"></button>',
+          responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 4,
+              }
+            },
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+              }
+            }
+          ]
+        });
+      }
+    });
+  </script>
+  {% else %}
+  <script>
+    jQuery(document).ready(function($) {
+      function engo_insv2() {
+        $('.js-instagram').slick({
+          arrows: true,
+          dots: false,
+          infinite: false,
+          autoplay: false,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          prevArrow: '<button type="button" class="slick-brand-prev fa fa-angle-left"></button>',
+          nextArrow: '<button type="button" class="slick-brand-next fa fa-angle-right"></button>',
+          responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 4
+              }
+            },
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2
+              }
+            }
+          ]
+        });
+      }
+      engo_insv2();
+    });
+  </script>
+  {% endif %}
+  <div class="instagram_nga_h6">
+    <div class="container container-v2">
+      <div class="text-center text_top">
+        {% if section.settings.title_content != blank %}
+        <h3 class="title_insta title-heading">{{section.settings.title_content}}</h3>
+        {% endif %}
+      </div>
+      <div class="row js-instagram list-intagram" id="engoj_section_instagram_v2">  
+        {% if section.settings.ins_userid == blank or section.settings.ins_access_token == blank %}
+        {% if shop.permanent_domain == "famipet-store-demo.myshopify.com" %}
+        {% for i in (1..section.settings.ins_limit_number) %}
+        <div class="col-lg-3">
+          <div class="content box-img1">
+            <a href="https://www.instagram.com/" class="delay03 inline-block" target="_blank">
+              <img src="{{ 'instagram' | append: i | append: '.jpg' | file_img_url: 'master' }}" class="img-fluid" alt="instagram" />
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="col-lg-3">
+          <div class="content box-img1">
+              <a href="https://www.instagram.com/" class="delay03 inline-block" target="_blank">  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+          </div>
+        </div>
+        {% endif %}
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Instagram v4",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Instagram title"
+    },
+    {
+      "type": "text",
+      "id": "title_content",
+      "label": "Title",
+      "default": "Shop INSTAGRAM"
+    },
+    {
+      "type": "text",
+      "id": "ins_userid",
+      "label": "User ID Instagram",
+      "default": "3672948962"
+    },
+    {
+      "type": "text",
+      "id": "ins_access_token",
+      "label": "Access Token Instagram",
+      "default": "3672948962.0f64772.430edb7f711e4665b59777c54d1ed9ce"
+    },
+    {
+      "type": "text",
+      "id": "ins_limit_number",
+      "label": "Limit Image",
+      "default": "6"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram v4",
+      "category": "HOME 6"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

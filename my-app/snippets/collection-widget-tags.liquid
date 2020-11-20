@@ -1,0 +1,10 @@
+
+<div class="widget widget-tags">
+  <h2 class="widget-title title14 font-bold dosis-font text-uppercase">{{section.settings.shop_by_tag_title}}</h2>
+  <ul class="list-none wg-list-tags list-tag">
+    {% for tag in collection.all_tags %}
+    <li>{{ tag | link_to_tag: tag }}</li>
+    {% endfor %}
+  </ul>
+</div>
+  
